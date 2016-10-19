@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>sdfasdf</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+function run() {
+  var text = document.getElementById('sourceTA').value,
+      target = document.getElementById('targetDiv'),
+      converter = new showdown.Converter(),
+      html = converter.makeHtml(text);
+
+    target.innerHTML = html;
+}
+  </script>
+</head>
+
+
+  <script src="https://cdn.jsdelivr.net/showdown/1.4.3/showdown.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/showdown/1.4.3/showdown.min.js.map"></script>
+<body>
+
+<div class="hidden">
+<textarea  id="sourceTA" rows="10" cols="82">
+#JAVASCRIPT
+This test is designed for programmers to measure their proficiency in using JavaScript to design and
+develop dynamic Web pages. The Secure Evaluation Mode and Remote versions of this test will contain a
+minimum of 39 questions and will require a typical time of 46 minutes. The Secure Interview Mode and
+QwikChek versions will provide as many questions as the test taker can answer within an approximate 29
+minute time limit.
+Following is a description of each sub-topic on the test:
+
+# Ajax tests understanding of how to use Ajax for asynchronous communications with a Web server.
+-
+
+- AJAX = Asynchronous JavaScript And XML.
+- AJAX is a developer's dream, because you can:
+Update a web page without reloading the page
+Request data from a server
+- after the page has loaded
+Receive data from a server
+- after the page has loaded
+Send data to a server - in the background
+
+AJAX is based on internet standards, and uses a combination of:
+
+- XMLHttpRequest object (to retrieve data from a web server)
+- JavaScript/DOM (to display/use the data)
+
+```
+<div id="demo"><h2>Let AJAX change this text</h2></div>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+</script>
+```
+
+Method  and Description
+
+- new XMLHttpRequest()  Creates a new XMLHttpRequest object
+  - The XMLHttpRequest object is used to exchange data with a server.
+- abort() Cancels the current request
+- getAllResponseHeaders() Returns header information
+- getResponseHeader() Returns specific header information
+- open(method,url,async,user,psw) Specifies the request
+  - method: the request type GET or POST
+  - url: the file location
+  - async: true (asynchronous) or false (synchronous)
+  - user: optional user name
+  - psw: optional password
+
+- send()  Sends the request to the server
+  - Used for GET requests
+- send(string)  Sends the request to the server.
+  - Used for POST requests
+- setRequestHeader()  Adds a label/value pair to the header to be sent
+
+Property  Description
+
+- onreadystatechange  Defines a function to be called when the readyState property changes
+- readyState  Holds the status of the XMLHttpRequest.
+  - 0: request not initialized
+  - 1: server connection established
+  - 2: request received
+  - 3: processing request
+  - 4: request finished and response is ready
+- responseText  Returns the response data as a string
+- responseXML Returns the response data as XML data
+- status  Returns the status-number of a request
+  - 200: "OK"
+  - 403: "Forbidden"
+  - 404: "Not Found"
+- statusText  Returns the status-text (e.g. "OK" or "Not Found")
+
+
+Method  Description
+
+- open(method, url, async)  Specifies the type of request
+  - method: the type of request: GET or POST
+  - url: the server (file) location
+  - async: true (asynchronous) or false (synchronous)
+- send()  Sends the request to the server (used for GET)
+- send(string)  Sends the request to the server (used for POST)
+
+Asynchronous - True or False?
+
+- To send the request asynchronously, the async parameter of the open() method has to be set to true:
+
+```xhttp.open("GET", "ajax_test.asp", true);```
+
+Property   Description
+
+- responseText  get the response data as a string
+- responseXML get the response data as XML data
+
+
+JQUERY WITH AJAX:
+
+```
+$("#generate").click(function(){
+  $("#quote").load("script.txt");
+});
+```
+
+```
+$("button").click(function(){
+    $.ajax({url: "demo_test.txt", success: function(result){
+        $("#div1").html(result);
+    }});
+});
+```
+
+Method    Description
+
+- $.ajax()  Performs an async AJAX request
+- $.ajaxPrefilter() Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax()
+- $.ajaxSetup() Sets the default values for future AJAX requests
+- $.ajaxTransport() Creates an object that handles the actual transmission of Ajax data
+- $.get() Loads data from a server using an AJAX HTTP GET request
+- $.getJSON() Loads JSON-encoded data from a server using a HTTP GET request
+- $.getScript() Loads (and executes) a JavaScript from a server using an AJAX HTTP GET request
+- $.param() Creates a serialized representation of an array or object (can be used as URL query string for AJAX requests)
+- $.post()  Loads data from a server using an AJAX HTTP POST request
+- ajaxComplete()  Specifies a function to run when the AJAX request completes
+- ajaxError() Specifies a function to run when the AJAX request completes with an error
+- ajaxSend()  Specifies a function to run before the AJAX request is sent
+- ajaxStart() Specifies a function to run when the first AJAX request begins
+- ajaxStop()  Specifies a function to run when all AJAX requests have completed
+- ajaxSuccess() Specifies a function to run when an AJAX request completes successfully
+- load()  Loads data from a server and puts the returned data into the selected element
+- serialize() Encodes a set of form elements as a string for submission
+- serializeArray()  Encodes a set of form elements as an array of names and values
+
+
+
+# Arrays and Collections measures knowledge of arrays and collections and how JavaScript represents sets of related objects.
+-
+
+ARRAY:
+
+- In JavaScript, arrays use numbered indexes.
+
+```
+var cars = ["Saab", "Volvo", "BMW"];
+var name = cars[0];
+document.getElementById("demo").innerHTML = cars[0];
+```
+
+Array properties and methods:```
+var x = cars.length;   // The length property returns the number of elements
+```
+```
+var y = cars.sort();   // The sort() method sorts arrays
+```
+
+Adding array elements:```
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+```
+```
+fruits.push("Lemon");
+```
+
+Removing:
+```
+var last = myArray.pop();
+```
+
+Iterating over array:
+
+```
+var x = []
+for(var i = 0; i < x.length; i++){
+  **do something**
+}
+```
+
+COLLECTIONS / OBJECTS / ASSOCIATIVE ARRAYS:
+
+- In JavaScript, objects use named indexes.
+```
+var y = {};
+```
+
+```
+var obj = { property_1:   value_1,   // property_# may be an identifier...
+       2:            value_2,   // or a number...
+            // ...,
+            "property n": value_n }; // or a string
+```
+
+```
+var myHonda = {color: "red", wheels: 4, engine: {cylinders: 4, size: 2.2}};
+```
+
+objectName.propertyName:
+
+```
+var myCar = new Object();
+myCar.make = "Ford";
+myCar.model = "Mustang";
+myCar.year = 1969;
+myCar["make"] = "Ford";
+myCar["model"] = "Mustang";
+myCar["year"] = 1969;
+```
+
+SET OBJECTS (Collections?):
+
+Set objects are collections of values. You can iterate its elements in insertion order. A value in a Set may only occur once; it is unique in the Set's collection.
+
+The following code shows some basic operations with a Set. See also the Set reference page for more examples and the complete API.
+
+```
+var mySet = new Set();
+mySet.add(1);
+mySet.add("some text");
+mySet.add("foo");
+
+mySet.has(1); // true
+mySet.delete("foo");
+mySet.size; // 2
+```
+
+Constructor Function:
+```
+function Car(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+}
+```
+
+```
+var mycar = new Car("Eagle", "Talon TSi", 1993);
+```
+
+
+
+# Defining Custom Objects determines proficiency in extending the JavaScript object model with userdeveloped objects. Measures knowledge and understanding of prototypal inheritance, as well as variables lifecycle inside objects (scope and context).
+-
+
+In real life, a car is an object.
+
+A car has properties like weight and color, and methods like start and stop:
+
+Properties
+
+- car.name = Fiat
+- car.model = 500
+- car.weight = 850kg
+- car.color = white
+
+Methods
+
+- car.start()
+- car.drive()
+- car.brake()
+- car.stop()
+
+CREATING OBJECTS:
+
+Object literal:
+
+- ```var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};```
+
+Other method:
+
+- ```
+ var person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+```
+
+Accessing Object Properties:
+
+- objectName.propertyName
+- objectName["propertyName"]
+
+METHODS:
+
+- A method is a function associated with an object, or, simply put, a method is a property of an object that is a function. Methods are defined the way normal functions are defined, except that they have to be assigned as the property of an object. An example is:
+
+```
+objectName.methodname = function_name;
+
+var myObj = {
+  myMethod: function(params) {
+    // ...do something
+  }
+};
+```
+
+ACCESSING OBJECT METHODS:
+
+- objectName.methodName()
+- name = person.fullName();
+
+SCOPE:
+
+- In JavaScript, scope is the set of variables, objects, and functions you have access to.
+- Local variables have local scope: They can only be accessed within the function.
+
+```
+function myFunction() {
+    var carName = "Volvo";
+    // code here can use carName
+}
+```
+
+- A variable declared outside a function, becomes GLOBAL.
+- A global variable has global scope: All scripts and functions on a web page can access it.
+- Do NOT create global variables unless you intend to.
+- With JavaScript, the global scope is the complete JavaScript environment.
+- In HTML, the global scope is the window object. All global variables belong to the window object.
+
+```
+var carName = " Volvo";
+// code here can use carName
+function myFunction() {
+    // code here can use  carName
+}
+```
+
+- Automatically Global. If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+
+
+```
+myFunction();
+// code here can use carName
+function myFunction() {
+    carName = "Volvo";
+}
+```
+
+PROTOTYPICAL INHERITANCE:
+
+- When it comes to inheritance, JavaScript only has one construct: objects. Each object has an internal link to another object called its prototype. That prototype object has a prototype of its own, and so on until an object is reached with null as its prototype. null, by definition, has no prototype, and acts as the final link in this prototype chain.
+
+- ```
+var oldObject = {
+  a: 2,
+  m: function(b){
+    return this.a + 1;
+  }
+};
+ var newObject = Object.create(oldObject);
+// newObject is an object that inherits from oldObject
+```
+
+Different ways to create objects and the resulting prototype chain
+
+- Objects created with syntax constructs:
+
+```
+var o = {a: 1};
+
+// The newly created object o has Object.prototype as its [[Prototype]]
+// o has no own property named 'hasOwnProperty'
+// hasOwnProperty is an own property of Object.prototype.
+// So o inherits hasOwnProperty from Object.prototype
+// Object.prototype has null as its prototype.
+// o ---> Object.prototype ---> null
+
+var a = ["yo", "whadup", "?"];
+
+// Arrays inherit from Array.prototype
+// (which has methods like indexOf, forEach, etc.)
+// The prototype chain looks like:
+// a ---> Array.prototype ---> Object.prototype ---> null
+
+function f(){
+  return 2;
+}
+
+// Functions inherit from Function.prototype
+// (which has methods like call, bind, etc.)
+// f ---> Function.prototype ---> Object.prototype ---> null
+```
+
+- With a constructor
+  - A "constructor" in JavaScript is "just" a function that happens to be called with the new operator.
+
+```
+function Graph() {
+  this.vertices = [];
+  this.edges = [];
+}
+
+Graph.prototype = {
+  addVertex: function(v){
+    this.vertices.push(v);
+  }
+};
+
+var g = new Graph();
+// g is an object with own properties 'vertices' and 'edges'.
+// g.[[Prototype]] is the value of Graph.prototype when new Graph() is executed.
+```
+
+- With Object.create
+  - ECMAScript 5 introduced a new method: Object.create(). Calling this method creates a new object. The prototype of this object is the first argument of the function:
+
+```
+var a = {a: 1};
+// a ---> Object.prototype ---> null
+
+var b = Object.create(a);
+// b ---> a ---> Object.prototype ---> null
+console.log(b.a); // 1 (inherited)
+
+var c = Object.create(b);
+// c ---> b ---> a ---> Object.prototype ---> null
+
+var d = Object.create(null);
+// d ---> null
+console.log(d.hasOwnProperty);
+// undefined, because d doesn't inherit from Object.prototype
+```
+
+- With the class keyword
+  - ECMAScript 6 introduced a new set of keywords implementing classes. Although these constructs look like those familiar to developers of class-based languages, they are not the same. JavaScript remains prototype-based. The new keywords include class, constructor, static, extends, and super.
+
+```
+class Polygon {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+
+class Square extends Polygon {
+  constructor(sideLength) {
+    super(sideLength, sideLength);
+  }
+  get area() {
+    return this.height * this.width;
+  }
+  set sideLength(newLength) {
+    this.height = newLength;
+    this.width = newLength;
+  }
+}
+var square = new Square(2);
+```
+
+
+# Document Objects assesses understanding of the JavaScript document object and the methods it provides for dynamically generating Web pages.
+-
+
+The HTML DOM Document Object
+
+- The document object represents your web page.
+- If you want to access any element in an HTML page, you always start with accessing the document object.
+
+- document.getElementById(id)   Find an element by element id
+- document.getElementsByTagName(name) Find elements by tag name
+- document.getElementsByClassName(name) Find elements by class name
+
+Changing HTML Elements
+
+- element.innerHTML =  new html content Change the inner HTML of an element
+- element.attribute = new value Change the attribute value of an HTML element
+- element.setAttribute(attribute, value)  Change the attribute value of an HTML element
+- element.style.property = new style  Change the style of an HTML element
+
+Adding and Deleting Elements
+
+- document.createElement(element) Create an HTML element
+- document.removeChild(element) Remove an HTML element
+- document.appendChild(element) Add an HTML element
+- document.replaceChild(element)  Replace an HTML element
+- document.write(text)  Write into the HTML output stream
+
+Adding Events Handlers
+
+- ```
+document.getElementById(id).onclick = function(){code}
+```
+
+Finding HTML Objects
+
+- The first HTML DOM Level 1 (1998), defined 11 HTML objects, object collections, and properties. These are still valid in HTML5.
+- Later, in HTML DOM Level 3, more objects, collections, and properties were added.
+
+```
+document.anchors Returns all <a> elements that have a name attribute  1
+document.applets Returns all <applet> elements (Deprecated in HTML5)  1
+document.baseURI  Returns the absolute base URI of the document 3
+document.body Returns the <body> element  1
+document.cookie Returns the document's cookie 1
+document.doctype  Returns the document's doctype  3
+document.documentElement  Returns the <html> element  3
+document.documentMode Returns the mode used by the browser  3
+document.documentURI  Returns the URI of the document 3
+document.domain Returns the domain name of the document server  1
+document.domConfig  Obsolete. Returns the DOM configuration 3
+document.embeds Returns all <embed> elements  3
+document.forms  Returns all <form> elements 1
+document.head Returns the <head> element  3
+document.images Returns all <img> elements  1
+document.implementation Returns the DOM implementation  3
+document.inputEncoding  Returns the document's encoding (character set) 3
+document.lastModified Returns the date and time the document was updated  3
+document.links  Returns all <area> and <a> elements that have a href attribute  1
+document.readyState Returns the (loading) status of the document  3
+document.referrer Returns the URI of the referrer (the linking document)  1
+document.scripts  Returns all <script> elements 3
+document.strictErrorChecking  Returns if error checking is enforced 3
+document.title  Returns the <title> element 1
+document.URL  Returns the complete URL of the document
+```
+
+JavaScript - HTML DOM Methods
+
+- HTML DOM methods are actions you can perform (on HTML Elements).
+
+- HTML DOM properties are values (of HTML Elements) that you can set or change.
+
+Property / Method Description
+
+```
+element.accessKey Sets or returns the accesskey attribute of an element
+element.addEventListener()  Attaches an event handler to the specified element
+element.appendChild() Adds a new child node, to an element, as the last child node
+element.attributes  Returns a NamedNodeMap of an element's attributes
+element.blur()  Removes focus from an element
+element.childElementCount Returns the number of child elements an element has
+element.childNodes  Returns a collection of an element's child nodes (including text and comment nodes)
+element.children  Returns a collection of an element's child element (excluding text and comment nodes)
+element.classList Returns the class name(s) of an element
+element.className Sets or returns the value of the class attribute of an element
+element.click() Simulates a mouse-click on an element
+element.clientHeight  Returns the height of an element, including padding
+element.clientLeft  Returns the width of the left border of an element
+element.clientTop Returns the width of the top border of an element
+element.clientWidth Returns the width of an element, including padding
+element.cloneNode() Clones an element
+element.compareDocumentPosition() Compares the document position of two elements
+element.contains()  Returns true if a node is a descendant of a node, otherwise false
+element.contentEditable Sets or returns whether the content of an element is editable or not
+element.dir Sets or returns the value of the dir attribute of an element
+element.firstChild  Returns the first child node of an element
+element.firstElementChild Returns the first child element of an element
+element.focus() Gives focus to an element
+element.getAttribute()  Returns the specified attribute value of an element node
+element.getAttributeNode()  Returns the specified attribute node
+element.getElementsByClassName()  Returns a collection of all child elements with the specified class name
+element.getElementsByTagName()  Returns a collection of all child elements with the specified tag name
+element.getFeature()  Returns an object which implements the APIs of a specified feature
+element.hasAttribute()  Returns true if an element has the specified attribute, otherwise false
+element.hasAttributes() Returns true if an element has any attributes, otherwise false
+element.hasChildNodes() Returns true if an element has any child nodes, otherwise false
+element.id  Sets or returns the value of the id attribute of an element
+element.innerHTML Sets or returns the content of an element
+element.insertBefore()  Inserts a new child node before a specified, existing, child node
+element.isContentEditable Returns true if the content of an element is editable, otherwise false
+element.isDefaultNamespace()  Returns true if a specified namespaceURI is the default, otherwise false
+element.isEqualNode() Checks if two elements are equal
+element.isSameNode()  Checks if two elements are the same node
+element.isSupported() Returns true if a specified feature is supported on the element
+element.lang  Sets or returns the value of the lang attribute of an element
+element.lastChild Returns the last child node of an element
+element.lastElementChild  Returns the last child element of an element
+element.namespaceURI  Returns the namespace URI of an element
+element.nextSibling Returns the next node at the same node tree level
+element.nextElementSibling  Returns the next element at the same node tree level
+element.nodeName  Returns the name of a node
+element.nodeType  Returns the node type of a node
+element.nodeValue Sets or returns the value of a node
+element.normalize() Joins adjacent text nodes and removes empty text nodes in an element
+element.offsetHeight  Returns the height of an element, including padding, border and scrollbar
+element.offsetWidth Returns the width of an element, including padding, border and scrollbar
+element.offsetLeft  Returns the horizontal offset position of an element
+element.offsetParent  Returns the offset container of an element
+element.offsetTop Returns the vertical offset position of an element
+element.ownerDocument Returns the root element (document object) for an element
+element.parentNode  Returns the parent node of an element
+element.parentElement Returns the parent element node of an element
+element.previousSibling Returns the previous node at the same node tree level
+element.previousElementSibling  Returns the previous element at the same node tree level
+element.querySelector() Returns the first child element that matches a specified CSS selector(s) of an element
+element.querySelectorAll()  Returns all child elements that matches a specified CSS selector(s) of an element
+element.removeAttribute() Removes a specified attribute from an element
+element.removeAttributeNode() Removes a specified attribute node, and returns the removed node
+element.removeChild() Removes a child node from an element
+element.replaceChild()  Replaces a child node in an element
+element.removeEventListener() Removes an event handler that has been attached with the addEventListener() method
+element.scrollHeight  Returns the entire height of an element, including padding
+element.scrollLeft  Sets or returns the number of pixels an element's content is scrolled horizontally
+element.scrollTop Sets or returns the number of pixels an element's content is scrolled vertically
+element.scrollWidth Returns the entire width of an element, including padding
+element.setAttribute()  Sets or changes the specified attribute, to the specified value
+element.setAttributeNode()  Sets or changes the specified attribute node
+element.style Sets or returns the value of the style attribute of an element
+element.tabIndex  Sets or returns the value of the tabindex attribute of an element
+element.tagName Returns the tag name of an element
+element.textContent Sets or returns the textual content of a node and its descendants
+element.title Sets or returns the value of the title attribute of an element
+element.toString()  Converts an element to a string
+
+nodelist.item() Returns the node at the specified index in a NodeList
+nodelist.length Returns the number of nodes in a NodeList
+```
+
+# Handling Events assesses knowledge of essential JavaScript event-handling operations including onChange, onClick, onLoad and other related events.
+-
+
+An HTML event can be something the browser does, or something a user does.
+
+- Here are some examples of HTML events:
+  - An HTML web page has finished loading
+  - An HTML input field was changed
+  - An HTML button was clicked
+
+```
+<button onclick="displayDate()">The time is?</button>
+```
+
+Here is a list of some common HTML events:
+
+Event Description
+
+- onchange  An HTML element has been changed
+- onclick The user clicks an HTML element
+- onmouseover The user moves the mouse over an HTML element
+- onmouseout  The user moves the mouse away from an HTML element
+- onkeydown The user pushes a keyboard key
+- onload  The browser has finished loading the page
+
+
+# Handling Forms evaluates proficiency with JavaScript input objects and validation methods available for handling HTML forms.
+-
+
+JavaScript Form Validation
+
+- HTML form validation can be done by JavaScript.
+- If a form field (fname) is empty, this function alerts a message, and returns false, to prevent the form from being submitted:
+
+```
+function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == null || x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+}
+```
+
+HTML FORM:
+```
+<form name="myForm" action="demo_form.asp" onsubmit="return validateForm()" method="post">
+Name: <input type="text" name="fname">
+<input type="submit" value="Submit">
+</form>
+```
+
+Automatic HTML Form Validation
+
+- HTML form validation can be performed automatically by the browser:
+- If a form field (fname) is empty, the required attribute prevents this form from being submitted:
+
+```
+<form action="demo_form.asp" method="post">
+  <input type="text" name="fname" required>
+  <input type="submit" value="Submit">
+</form>
+```
+
+Data Validation
+
+- Data validation is the process of ensuring that user input is clean, correct, and useful.
+
+Typical validation tasks are:
+
+- has the user filled in all required fields?
+- has the user entered a valid date?
+- has the user entered text in a numeric field?
+- Most often, the purpose of data validation is to ensure correct user input.
+
+- Validation can be defined by many different methods, and deployed in many different ways.
+- Server side validation is performed by a web server, after input has been sent to the server.
+- Client side validation is performed by a web browser, before input is sent to a web server.
+
+HTML Constraint Validation
+
+- HTML5 introduced a new HTML validation concept called constraint validation.
+
+HTML constraint validation is based on:
+
+- Constraint validation HTML Input Attributes
+- Constraint validation CSS Pseudo Selectors
+- Constraint validation DOM Properties and Methods
+- Constraint Validation HTML Input Attributes
+
+Attribute Description
+
+- disabled  Specifies that the input element should be disabled
+- max Specifies the maximum value of an input element
+- min Specifies the minimum value of an input element
+- pattern Specifies the value pattern of an input element
+- required  Specifies that the input field requires an element
+- type  Specifies the type of an input element
+- validity  Contains boolean properties related to the validity of an input element.
+- validationMessage Contains the message a browser will display when the validity is false.
+- willValidate  Indicates if an input element will be validated.
+
+Constraint Validation CSS Pseudo Selectors
+
+Selector  Description
+
+- :disabled Selects input elements with the "disabled" attribute specified
+- :invalid  Selects input elements with invalid values
+- :optional Selects input elements with no "required" attribute specified
+- :required Selects input elements with the "required" attribute specified
+- :valid  Selects input elements with valid values
+
+Validity Properties
+
+The validity property of an input element contains a number of properties related to the validity of data:
+
+Property  Description
+
+- customError Set to true, if a custom validity message is set.
+- patternMismatch Set to true, if an element's value does not match its pattern attribute.
+- rangeOverflow Set to true, if an element's value is greater than its max attribute.
+- rangeUnderflow  Set to true, if an element's value is less than its min attribute.
+- stepMismatch  Set to true, if an element's value is invalid per its step attribute.
+- tooLong Set to true, if an element's value exceeds its maxLength attribute.
+- typeMismatch  Set to true, if an element's value is invalid per its type attribute.
+- valueMissing  Set to true, if an element (with a required attribute) has no value.
+- valid Set to true, if an element's value is valid.
+
+```
+<input id="id1" type="number" max="100">
+<button onclick="myFunction()">OK</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var txt = "";
+    if (document.getElementById("id1").validity.rangeOverflow) {
+       txt = "Value too large";
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+```
+
+# Handling Functions determines knowledge of JavaScript function definition and calling, function arguments and functions as first class objects.
+-
+
+```
+function name(parameter1, parameter2, parameter3) {
+    code to be executed
+}
+```
+
+- Function parameters are the names listed in the function definition.
+- Function arguments are the real values received by the function when it is invoked.
+- Inside the function, the arguments (the parameters) behave as local variables.
+
+Function Invocation
+
+The code inside the function will execute when "something" invokes (calls) the function:
+
+- When an event occurs (when a user clicks a button)
+- When it is invoked (called) from JavaScript code
+- Automatically (self invoked)
+
+- When JavaScript reaches a return statement, the function will stop executing.
+
+```
+var x = myFunction(4, 3);        // Function is called, return value will end up in x
+
+function myFunction(a, b) {
+    return a * b;                // Function returns the product of a and b
+}
+```
+
+The Arguments Object
+
+- JavaScript functions have a built-in object called the arguments object.
+- The argument object contains an array of the arguments used when the function was called (invoked).
+
+```
+x = findMax(1, 123, 500, 115, 44, 88);
+
+function findMax() {
+    var i;
+    var max = -Infinity;
+    for (i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+            max = arguments[i];
+        }
+    }
+    return max;
+}
+```
+
+Arguments are Passed by Value
+
+- The parameters, in a function call, are the function's arguments.
+
+Invoking a Function as a Method
+
+```
+var myObject = {
+    firstName:"John",
+    lastName: "Doe",
+    fullName: function () {
+        return this.firstName + " " + this.lastName;
+    }
+}
+myObject.fullName();         // Will return "John Doe"
+```
+
+Invoking a Function with a Function Constructor
+
+- If a function invocation is preceded with the new keyword, it is a constructor invocation.
+- It looks like you create a new function, but since JavaScript functions are objects you actually create a new object:
+
+```
+// This is a function constructor:
+function myFunction(arg1, arg2) {
+    this.firstName = arg1;
+    this.lastName  = arg2;
+}
+
+// This creates a new object
+var x = new myFunction("John","Doe");
+x.firstName;                             // Will return "John"
+```
+
+FIRST CLASS OBJECT:
+
+-  In JavaScript, functions are first-class objects, because they can have properties and methods just like any other object.
+
+# JavaScript Flow Control measures knowledge in the use of control statements including for, for .. in, if ..else, while, and switch statements.
+-
+
+Different Kinds of Loops
+
+- JavaScript supports different kinds of loops:
+  - for - loops through a block of code a number of times
+  - for/in - loops through the properties of an object
+  - while - loops through a block of code while a specified condition is true
+  - do/while - also loops through a block of code while a specified condition is true
+
+FOR LOOP
+
+- The for loop is often the tool you will use when you want to create a loop.
+- The for loop has the following syntax:
+
+```
+for (statement 1; statement 2; statement 3) {
+    code block to be executed
+}
+```
+
+- Statement 1 is executed before the loop (the code block) starts.
+- Statement 2 defines the condition for running the loop (the code block).
+- Statement 3 is executed each time after the loop (the code block) has been executed.
+
+Example:
+```
+for (i = 0; i < 5; i++) {
+    text += "The number is " + i + "<br>";
+}
+```
+
+FOR/IN STATEMENT:
+
+- Loop through the properties of an object:
+
+```
+var person = {fname:"John", lname:"Doe", age:25};
+
+var text = "";
+var x;
+for (x in person) {
+    text += person[x];
+}
+```
+
+WHILE LOOP:
+
+- Loop through code WHILE a condition is true
+
+```
+var text = "";
+var i = 0;
+while (i < 5) {
+    text += "<br>The number is " + i;
+    i++;
+}
+```
+
+IF/ELSE STATEMENT:
+
+- Conditional statements are used to perform different actions based on different conditions.
+
+```
+if (time < 10) {
+    greeting = "Good morning";
+} else if (time < 20) {
+    greeting = "Good day";
+} else {
+    greeting = "Good evening";
+}
+```
+
+SWITCH STATEMENT
+
+- The switch statement is used to perform different actions based on different conditions.
+
+```
+switch(expression) {
+    case n:
+        code block
+        break;
+    case n:
+        code block
+        break;
+    default:
+        default code block
+}
+```
+
+- When JavaScript reaches a break keyword, it breaks out of the switch block.
+- The default keyword specifies the code to run if there is no case match.
+
+
+# JavaScript Security and Client Side Data tests knowledge of browser based JavaScript Security as well as persistent storage techniques on the client. Security issues such as same origin policy will be covered. Persistent storage techniques cover the use of cookies in JavaScript.
+-
+
+The way JavaScript interacts with the DOM poses a risk for end users by enabling malicious actors to deliver scripts over the web and run them on client computers.
+
+Common JavaScript Security Vulnerabilities
+
+Cross-Site Scripting (XSS), one of the most common JavaScript security vulnerabilities. Cross-Site Scripting vulnerabilities enable attackers to manipulate websites to return malicious scripts to visitors. These malicious scripts then execute on the client side in a manner determined by the attacker. XSS vulnerabilities can exist when browser or application authors fail to implement the same origin policy and can be prevented by following correct development techniques. If XSS vulnerabilities aren’t remediated, they can result in user data theft, account tampering, malware spreading or remote control over a user’s browser.
+
+Cross-Site Request Forgery (CSRF). Cross-Site Request Forgery vulnerabilities allow attackers to manipulate victims’ browsers to take unintended actions on other sites. This is possible when target sites authenticate requests solely using cookies and attackers are able to send requests carrying users’ cookies. This JavaScript security issue can lead to account tampering, data theft, fraud and more.
+
+- Sandboxing, or running scripts separately so that they can only access certain resources and perform specific tasks.
+  - Sandbox is a security mechanism for separating running programs. It is often used to execute untested or untrusted programs or code, possibly from unverified or untrusted third parties, suppliers, users or websites, without risking harm to the host machine or operating system.
+
+HTML < iframe > sandbox Attribute
+
+```
+<iframe src="demo_iframe_sandbox.htm" sandbox></iframe>
+```
+
+The sandbox attribute enables an extra set of restrictions for the content in the iframe.
+
+- When the sandbox attribute is present, and it will:
+  - treat the content as being from a unique origin
+  - block form submission
+  - block script execution
+  - disable APIs
+  - prevent links from targeting other browsing contexts
+  - prevent content from using plugins (through < embed >, < object >, < applet >, or other)
+  - prevent the content to navigate its top-level browsing context
+  - block automatically triggered features (such as automatically playing a video or automatically focusing a form control)
+
+Attribute Values
+
+```
+Value Description
+(no value)  Applies all restrictions
+allow-forms Re-enables form submission
+allow-pointer-lock  Re-enables APIs
+allow-popups  Re-enables popups
+allow-same-origin Allows the iframe content to be treated as being from the same origin
+allow-scripts Re-enables scripts
+allow-top-navigation  Allows the iframe content to navigate its top-level browsing context
+```
+
+```
+<iframe src="demo_iframe_sandbox_form.htm" sandbox="allow-forms"></iframe>
+```
+
+- The essence of the Same Origin policy can be formulated as: windows can work in contexts of each other only if they are from same protocol://domain:port, or, shortly, from same origin.
+  - The “Same Origin” policy limits the access of one window to another.
+The reason behind that is security. If you have blabla.com in one window and gmail.com in another one, then you’d not want a script from blabla.com to access or modify your mail or run actions in context of gmail on your behalf.
+  - From the example above we’ve seen that browser protects location of the window from different origin from being read. But we can set it:
+
+```
+<iframe src="http://google.com" name="google" style="height:100px"></iframe>
+<script>
+document.getElementsByName('google')[0].onload = function() {
+  frames[0].location = 'http://wikipedia.org'
+  alert('Changed to wikipedia')
+}
+</script>
+```
+
+The document.domain method:
+
+- Method type: iframe. Note that this is an iframe method that sets the value of document.domain to a suffix of the current domain. If it does so, the shorter domain is used for subsequent origin checks. For example, assume a script in the document at http://store.company.com/dir/other.html executes the following statement:
+
+- document.domain = "company.com";
+After that statement executes, the page would pass the origin check with http://company.com/dir/page.html. However, by the same reasoning, company.com could not set document.domain to othercompany.com.
+
+- With this method, you would be allowed to exectue javascript from an iframe sourced on a subdomain on a page sourced on the main domain. This method is not suited for cross-domain resources as browsers like Firefox will not allow you to change the document.domain to a completely alien domain.
+
+The Cross-Origin Resource Sharing method:
+
+- Method type: AJAX. Cross-Origin Resource Sharing (CORS) is a W3C Working Draft that defines how the browser and server must communicate when accessing sources across origins. The basic idea behind CORS is to use custom HTTP headers to allow both the browser and the server to know enough about each other to determine if the request or response should succeed or fail.
+
+- For a simple request, one that uses either GET or POST with no custom headers and whose body is text/plain, the request is sent with an extra header called Origin. The Origin header contains the origin (protocol, domain name, and port) of the requesting page so that the server can easily determine whether or not it should serve a response. An example Origin header might look like this:
+
+- Origin: http://www.stackoverflow.com. If the server decides that the request should be allowed, it sends a Access-Control-Allow-Origin header echoing back the same origin that was sent or * if it’s a public resource. For example:
+
+- Access-Control-Allow-Origin: http://www.stackoverflow.com. If this header is missing, or the origins don’t match, then the browser disallows the request. If all is well, then the browser processes the request. Note that neither the requests nor responses include cookie information.
+
+The Mozilla team suggests in their post about CORS that you should check for the existence of the withCredentials property to determine if the browser supports CORS via XHR. You can then couple with the existence of the XDomainRequest object to cover all browsers:
+
+```
+function createCORSRequest(method, url){
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr){
+        xhr.open(method, url, true);
+    } else if (typeof XDomainRequest != "undefined"){
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+
+var request = createCORSRequest("get", "http://www.stackoverflow.com/");
+if (request){
+    request.onload = function() {
+        // ...
+    };
+    request.onreadystatechange = handler;
+    request.send();
+}
+```
+
+Note that for the CORS method to work, you need to have access to any type of server header mechanic and can't simply access any third-party resource.
+
+Source: http://www.nczonline.net/blog/2010/05/25/cross-domain-ajax-with-cross-origin-resource-sharing/
+
+The window.postMessage method:
+
+- Method type: iframe. window.postMessage, when called, causes a MessageEvent to be dispatched at the target window when any pending script that must be executed completes (e.g. remaining event handlers if window.postMessage is called from an event handler, previously-set pending timeouts, etc.). The MessageEvent has the type message, a data property which is set to the string value of the first argument provided to window.postMessage, an origin property corresponding to the origin of the main document in the window calling window.postMessage at the time window.postMessage was called, and a source property which is the window from which window.postMessage is called.
+
+- To use window.postMessage, an event listener must be attached:
+
+ ```
+    // Internet Explorer
+    window.attachEvent('onmessage',receiveMessage);
+
+    // Opera/Mozilla/Webkit
+    window.addEventListener("message", receiveMessage, false);
+And a receiveMessage function must be declared:
+
+function receiveMessage(event)
+{
+    // do something with event.data;
+}
+```
+
+- The off-site iframe must also send events properly via postMessage:
+
+```
+<script>window.parent.postMessage('foo','*')</script>
+```
+
+- Any window may access this method on any other window, at any time, regardless of the location of the document in the window, to send it a message. Consequently, any event listener used to receive messages must first check the identity of the sender of the message, using the origin and possibly source properties. This cannot be understated: Failure to check the origin and possibly source properties enables cross-site scripting attacks.
+
+
+The Reverse Proxy method
+
+- Method type: Ajax. Setting up a simple reverse proxy on the server, will allow the browser to use relative paths for the Ajax requests, while the server would be acting as a proxy to any remote location.
+- If using mod_proxy in Apache, the fundamental configuration directive to set up a reverse proxy is the ProxyPass. It is typically used as follows:
+- ProxyPass     /ajax/     http://other-domain.com/ajax/
+In this case, the browser would be able to request /ajax/web_service.xml as a relative URL, but the server would serve this by acting as a proxy to http://other-domain.com/ajax/web_service.xml.
+- One interesting feature of the this method is that the reverse proxy can easily distribute requests towards multiple back-ends, thus acting as a load balancer.
+
+
+Storage on the Client Device
+
+- In practice, "client-side storage" means data is passed to the browser's storage API, which saves it on the local device in the same area as it stores other user-specific information, e.g. preferences and cache. Beyond saving data, the APIs let you retrieve data, and in some cases, perform searches and batch manipulations.
+
+- Web Storage
+  - Web Storage is basically a single persistent object called localStorage. You can set values using localStorage.foo = "bar" and retrieve them later on — even when the browser has been closed and re-opened — as localStorage.foo. There's also a second object called sessionStorage available, which works the same way, but clears when the window is closed.
+  - Web Storage is an example of a NoSQL key-value store.
+
+- Web SQL Database
+  - Web SQL Database is a structured database with all the functionality - and complexity - of a typical SQL-powered relational database. Indexed Database sits somewhere between the two. It has free-form key-value pairs, like Web Storage, but also the capability to index fields from those values, so searching is much faster.
+
+- Indexed Database (IndexedDB)
+  - So far, we have seen that Web Storage and Web SQL Database both have major strengths as well as major weaknesses. Indexed Database has arisen from experiences with both of those earlier APIs, and can be seen as an attempt to combine their strengths without incurring their weaknesses. An Indexed Database is a collection of "object stores" which you can just drop objects into. The stores are something like SQL tables, but in this case, there's no constraints on the object structure and so no need to define anything upfront. So this is similar to Web Storage, with the advantage that you can have as many databases as you like, and as many stores within each database. But unlike Web Storage, there are important performance benefits: An asynchronous API, and you can create indexes on stores to improve search speed.
+
+- FileSystem
+  - The previous formats are all suitable for text and structured data, but when it comes to large files and binary content, we need something else. Fortunately, we now have a FileSystem API standard. It gives each domain a full hierarchical filesystem, and in Chrome at least, these are real files sitting on the user's hard drive.
+
+- Cookies are data, stored in small text files, on your computer.
+  - Cookies were invented to solve the problem "how to remember information about the user":
+    - When a user visits a web page, his name can be stored in a cookie.
+    - Next time the user visits the page, the cookie "remembers" his name.
+
+CREATE A COOKIE:
+
+```
+document.cookie = "username=John Doe";
+```
+
+- You can also add an expiry date (in UTC time). By default, the cookie is deleted when the browser is closed:
+
+```
+document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+```
+
+# Operators and Expressions evaluates proficiency with numeric and string operators and how they are used to create JavaScript expressions.
+-
+
+Operator  Description
+
+```
++ Addition
+- Subtraction
+* Multiplication
+/ Division
+% Modulus
+++  Increment
+--  Decrement
+```
+
+```
+Assignment               x = y  x = y
+Addition assignment        x += y x = x + y
+Subtraction assignment      x -= y  x = x - y
+Multiplication assignment x *= y  x = x * y
+Division assignment        x /= y x = x / y
+Remainder assignment      x %= y  x = x % y
+Exponentiation assignment x **= y x = x ** y
+Left shift assignment     x <<= y x = x << y
+Right shift assignment       x >>= y  x = x >> y
+Unsigned right shift assignment x >>>= y  x = x >>> y
+Bitwise AND assignment  x &= y  x = x & y
+Bitwise XOR assignment  x ^= y  x = x ^ y
+Bitwise OR assignment x |= y  x = x | y
+```
+
+
+Comparison operators
+
+```
+Operator  Description Examples returning true
+Equal (==)  Returns true if the operands are equal. 3 == var1
+"3" == var1
+
+3 == '3'
+Not equal (!=)  Returns true if the operands are not equal. var1 != 4
+var2 != "3"
+Strict equal (===)  Returns true if the operands are equal and of the same type. See also Object.is and sameness in JS. 3 === var1
+Strict not equal (!==)  Returns true if the operands are of the same type but not equal, or are of different type.  var1 !== "3"
+3 !== '3'
+Greater than (>)  Returns true if the left operand is greater than the right operand. var2 > var1
+"12" > 2
+Greater than or equal (>=)  Returns true if the left operand is greater than or equal to the right operand. var2 >= var1
+var1 >= 3
+Less than (<) Returns true if the left operand is less than the right operand.  var1 < var2
+"2" < 12
+Less than or equal (<=) Returns true if the left operand is less than or equal to the right operand.  var1 <= var2
+var2 <= 5
+```
+
+Logical operators
+
+Logical operators are typically used with Boolean (logical) values; when they are, they return a Boolean value. However, the && and || operators actually return the value of one of the specified operands, so if these operators are used with non-Boolean values, they may return a non-Boolean value. The logical operators are described in the following table.
+
+```
+Logical operators
+Operator  Usage Description
+Logical AND (&&)  expr1 && expr2  Returns expr1 if it can be converted to false; otherwise, returns expr2. Thus, when used with Boolean values, && returns true if both operands are true; otherwise, returns false.
+Logical OR (||) expr1 || expr2  Returns expr1 if it can be converted to true; otherwise, returns expr2. Thus, when used with Boolean values, || returns true if either operand is true; if both are false, returns false.
+Logical NOT (!) !expr Returns false if its single operand can be converted to true; otherwise, returns true.
+```
+
+String operators
+
+- In addition to the comparison operators, which can be used on string values, the concatenation operator (+) concatenates two string values together, returning another string that is the union of the two operand strings.
+
+```
+console.log("my " + "string"); // console logs the string "my string".
+```
+
+```
+var mystring = "alpha";
+mystring += "bet"; // evaluates to "alphabet" and assigns this value to mystring.
+```
+
+Conditional (ternary) operator
+
+- The conditional operator is the only JavaScript operator that takes three operands. The operator can have one of two values based on a condition. The syntax is:
+
+```
+condition ? val1 : val2
+```
+
+- If condition is true, the operator has the value of val1. Otherwise it has the value of val2. You can use the conditional operator anywhere you would use a standard operator.
+
+```
+var status = (age >= 18) ? "adult" : "minor";
+```
+
+
+EXPRESSIONS:
+
+- An expression is any valid set of literals, variables, operators, and expressions that evaluates to a single value. The value may be a number, a string, or a logical value. Conceptually, there are two types of expressions: those that assign a value to a variable, and those that simply have a value.
+- Every syntactically valid expression resolves to some value but conceptually, there are two types of expressions: with side effects (for example: those that assign value to a variable) and those that in some sense evaluates and therefore resolves to value.
+- The expression x = 7 is an example of the first type. This expression uses the = operator to assign the value seven to the variable x. The expression itself evaluates to seven.
+- The code 3 + 4 is an example of the second expression type. This expression uses the + operator to add three and four together without assigning the result, seven, to a variable.
+
+JavaScript has the following expression categories:
+
+- Arithmetic: evaluates to a number, for example 3.14159. (Generally uses arithmetic operators.)
+- String: evaluates to a character string, for example, "Fred" or "234". (Generally uses string operators.)
+- Logical: evaluates to true or false. (Often involves logical operators.)
+- Primary expressions: Basic keywords and general expressions in JavaScript.
+- Left-hand-side expressions: Left values are the destination of an assignment.
+
+PRiMARY EXPRESSSIONS:
+
+- Basic keywords and general expressions in JavaScript.
+
+'THIS'
+
+- Use the this keyword to refer to the current object. In general, this refers to the calling object in a method. Use this either with the dot or the bracket notation:
+
+```
+this["propertyName"]
+this.propertyName
+```
+
+LEFT HAND EXPRESSIONS:
+
+- Left values are the destination of an assignment.
+
+'NEW'
+
+- You can use the new operator to create an instance of a user-defined object type or of one of the built-in object types. Use new as follows:
+
+```
+var objectName = new objectType([param1, param2, ..., paramN]);
+```
+
+# String Handling measures knowledge of JavaScript methods for string handling and for manipulating string values using regular expressions.
+-
+
+REGULAR EXPRESSIONS
+
+```
+/pattern/modifiers;
+```
+
+```
+var patt = /w3schools/i
+```
+
+- So what is a regular expression (or regex for short)? Regex's are patterns that can be matched against a string. It's basically just a template that is applied over a string that is to be scanned.
+- The String object has four methods that take regular expressions as arguments. These are your workhorse methods that allow you to match, search, and replace a string using the flexibility of regular expressions:
+
+- match( regular expression ) Executes a search for a match within a string based on a regular expression. It returns an array of information or null if no match are found.
+```
+var string1="Peter has 8 dollars and Jane has 15"
+parsestring1=string1.match(/\d+/g) //returns the array [8,15]
+```
+
+- replace( regular expression, replacement text ) Searches and replaces the regular expression portion (match) with the replaced text instead.
+Note: Also supports the replacement of regular expression with the specified RegExp $1…$9 properties.
+```
+var string2="(304)434-5454"
+parsestring2=string2.replace(/[\(\)-]/g, "") //Returns "3044345454" (removes "(", ")", and "-")
+```
+
+- split ( string literal or regular expression )  Breaks up a string into an array of substrings based on a regular expression or fixed string.
+
+```
+- var string3="1,2, 3,  4,   5"
+parsestring3=string3.split(/\s*,\s*/) //Returns the array ["1","2","3","4","5"]
+```
+
+- search( regular expression )  Tests for a match in a string. It returns the index of the match, or -1 if not found. Does NOT support global searches (ie: "g" flag not supported).
+
+ RegExp methods and properties
+
+- You just saw several regular expression related string methods; in most situations, they are all you need for your string manipulation needs. However, true to the versatility of regular expressions, the Regular Expression (RegExp) object itself also supports two methods that mimic the functions of their string counterparts, the difference being these two methods take strings as parameters, while with String functions, they take a RegExp instead. The following describes the methods and properties of the regular expression object.
+
+ Methods
+
+Method  Description
+
+- test(string)  Tests a string for pattern matches. This method returns a Boolean that indicates whether or not the specified pattern exists within the searched string. This is the most commonly used method for validation. It updates some of the properties of the parent RegExp object following a successful search.
+-cexec(string)  Executes a search for a pattern within a string. If the pattern is not found, exec() returns a null value. If it finds one or more matches it returns an array of the match results. It also updates some of the properties of the parent RegExp object.
+Here is a simple example that uses test() to see if a regular expression matches against a certain string:
+
+```
+var pattern=/php/i
+pattern.test("PHP is your friend") //returns true
+```
+
+MODIFIERS
+
+- Modifiers are used to perform case-insensitive and global searches:
+
+Modifier  Description
+
+- i Perform case-insensitive matching
+- g Perform a global match (find all matches rather than stopping after the first match)
+- m Perform multiline matching
+
+BRACKETS
+
+- Brackets are used to find a range of characters:
+
+Expression  Description
+
+- [abc] Find any character between the brackets
+- [^abc]  Find any character NOT between the brackets
+- [0-9] Find any digit between the brackets
+- [^0-9]  Find any digit NOT between the brackets
+- (x|y) Find any of the alternatives specified
+
+METACHARACTERS
+
+- Metacharacters are characters with a special meaning:
+
+Metacharacter Description
+
+- . Find a single character, except newline or line terminator
+- \w  Find a word character
+- \W  Find a non-word character
+- \d  Find a digit
+- \D  Find a non-digit character
+- \s  Find a whitespace character
+- \S  Find a non-whitespace character
+- \b  Find a match at the beginning/end of a word
+- \B  Find a match not at the beginning/end of a word
+- \0  Find a NUL character
+- \n  Find a new line character
+- \f  Find a form feed character
+- \r  Find a carriage return character
+- \t  Find a tab character
+- \v  Find a vertical tab character
+- \xxx  Find the character specified by an octal number xxx
+- \xdd  Find the character specified by a hexadecimal number dd
+- \uxxxx  Find the Unicode character specified by a hexadecimal number xxxx
+
+QUANTIFIERS
+
+Quantifier  Description
+
+- n+  Matches any string that contains at least one n
+- n*  Matches any string that contains zero or more occurrences of n
+- n?  Matches any string that contains zero or one occurrences of n
+- n{X}  Matches any string that contains a sequence of X n's
+- n{X,Y}  Matches any string that contains a sequence of X to Y n's
+- n{X,} Matches any string that contains a sequence of at least X n's
+- n$  Matches any string with n at the end of it
+- ^n  Matches any string with n at the beginning of it
+- ?=n Matches any string that is followed by a specific string n
+- ?!n Matches any string that is not followed by a specific string n
+
+REGEXP OBJECT PROPERTIES
+
+Property  Description
+
+- constructor Returns the function that created the RegExp object's prototype
+- global  Checks whether the "g" modifier is set
+- ignoreCase  Checks whether the "i" modifier is set
+- lastIndex Specifies the index at which to start the next match
+- multiline Checks whether the "m" modifier is set
+- source  Returns the text of the RegExp pattern
+
+REGEX OBJECT METHOD
+
+Method  Description
+
+- compile() Deprecated in version 1.5. Compiles a regular expression
+- exec()  Tests for a match in a string. Returns the first match
+- test()  Tests for a match in a string. Returns true or false
+- toString()  Returns the string value of the regular expression
+
+```
+Any single character
+?
+g?t finds get, got, gut
+```
+```
+Any string of characters (one or more)
++
+w+e finds wide, white, write but not we
+```
+```
+Any string of characters (or none)
+*
+w*e finds wide, white, write and we
+```
+```
+One of the specified characters
+[]
+g[eo]t finds get and got but not gu
+```
+```
+One of the characters in a range
+[-]
+[b-p]at finds bat, cat, fat, hat, mat but not rat or sat
+```
+```
+All characters
+[]
+i[] finds line, list, late
+```
+```
+One expression or another
+(|)
+W(in|indows) will find Win or Windows
+```
+```
+One or more expressions
++()
++(at) will find atat in catatonic and at in battle
+```
+```
+All characters (perhaps on different lines)
+
+*[]
+
+h[]d finds helped, Hello World, and Hello (cr lf) Win95 World.
+```
+```
+/\**[]\*/ will match C style comments (on several lines if necessary
+(*[] will span across multiple lines up to 32767 characters)
+```
+```
+A string that doesn't start with an expression
+!()
+: !(http) finds : in "following:" but not in "http://www.funduc.com"
+```
+```
+One of the characters not in a range
+![-]
+[a-z]at!([b-p]at) matches r in "rat" & s in "sat" but nothing in "bat", "cat", "hat".
+```
+```
+An expression at the beginning of a line
+^
+^the finds the at the beginning of a line and The (if case sensitive is turned off)
+```
+```
+An expression at the end of a line
+$
+end$ finds end when its the last string on a line.
+```
+```
+One or more column(s) before or after a string
++n
+[h]+4// finds http:// but not https://
+```
+```
+Using Special Characters
+\
+\(\*\) will find (*)
+```
+# Variables and Syntax examines knowledge of JavaScript syntax and understanding of JavaScript variables, values and native types (primitive and complex).
+-
+
+JavaScript allows you to work with three primitive data types:
+
+- Numbers, eg. 123, 120.50 etc.
+- Strings of text e.g. "This text string" etc.
+- Boolean e.g. true or false.
+
+Storing a value in a variable is called variable initialization.
+
+PRIMITIVE TYPE
+
+Primitive types are types provided by the system, in this case by JavaScript. Primitive type for JavaScript are
+
+- Booleans
+- numbers
+- text.
+
+Boolean variables can only have 2 possible values, true or false.
+
+COMPLEX TYPES
+
+A complex type is an object, be it either standard or custom made. Its home is the heap and goes everywhere by reference.
+
+ARRAY
+
+- In JavaScript, all Arrays are untyped, so you can put everything you want in an Array and worry about that later. Arrays are objects, they have methods and properties you can invoke at will.
+
+OBJECT
+
+- An object within JavaScript is created using the new operator:
+
+```
+var myObject = new Object();
+```
+
+- Objects can also be created with the object notation, which uses curly braces:
+```
+var myObject = {};
+```
+
+# Windows, Frames and Navigation measures knowledge of the Window object hierarchy, as well as understanding of how to control Web pages using JavaScript, including forward and backward paging.
+-
+
+THE WINDOW OBJECT
+
+- The window object is supported by all browsers. It represents the browser's window.
+- All global JavaScript objects, functions, and variables automatically become members of the window object.
+- Global variables are properties of the window object.
+- Global functions are methods of the window object.
+- Even the document object (of the HTML DOM) is a property of the window object:
+
+```
+window.document.getElementById("header");
+```
+
+is the same as:
+
+```
+document.getElementById("header");
+```
+
+Both properties return the sizes in pixels:
+
+```
+window.innerHeight - the inner height of the browser window (in pixels)
+window.innerWidth - the inner width of the browser window (in pixels)
+```
+
+
+Other Window Methods
+Some other methods:
+
+```
+window.open() - open a new window
+window.close() - close the current window
+window.moveTo() -move the current window
+window.resizeTo() -resize the current window
+```
+
+WINDOW NAVIGATOR
+
+- The window.navigator object contains information about the visitor's browser.
+- The window.navigator object can be written without the window prefix.
+
+Some examples:
+
+```
+Navigator Cookie Enabled:
+navigator.cookieEnabled
+
+Return name of Browser:
+navigator.appName
+navigator.appCodeName
+
+Return engine name of browser:
+navigator.product
+
+Return browser version:
+navigator.appVersion
+navigator.userAgent
+
+Returns browser operating system:
+navigator.platform
+
+Returns browser language:
+navigator.language
+
+Is Java enabled?
+navigator.javaEnabled()
+```
+
+WINDOW FRAME
+
+```
+window.frames
+```
+
+- The frames property returns an array-like object, which represents all IFRAME elements in the current window.
+- The IFRAME elements can be accessed by index numbers. The index starts at 0.
+- Use frames.length to find the number of frames.
+
+PAGING
+
+Change current website:
+
+```
+window.location.href = newUrl;
+```
+
+
+Back Paging:
+
+```
+window.history.back()
+```
+
+Back 2 pages:
+
+```
+window.history.go(-2);
+```
+
+
+</textarea>
+</div>
+
+  <!-- <hr/>
+  <button id="runBtn" onClick="">Convert</button> -->
+  <hr/>
+  <div id="targetDiv"></div>
+
+<script>run();</script>
+</body>
+</html>
